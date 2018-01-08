@@ -3,6 +3,7 @@
 This is a Sentimental Analysis on movies reviews. This project is a kaggle project. 
 The url is :https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews
 
+![treebank](https://user-images.githubusercontent.com/30057368/34697557-aa0ef978-f4a1-11e7-8158-7415b258735c.png)
 
 "There's a thin line between likably old-fashioned and fuddy-duddy, and The Count of Monte Cristo ... 
 never quite settles on either side."
