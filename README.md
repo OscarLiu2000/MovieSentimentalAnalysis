@@ -19,3 +19,6 @@ There you will find have source code, a live demo, and even an online interface 
 [2] Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank, Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Chris Manning, Andrew Ng and Chris Potts. Conference on Empirical Methods in Natural Language Processing (EMNLP 2013).
 
 Image credits: Popcorn - Maura Teague, http://www.flickr.com/photos/93496438@N06/
+
+Running on http://127.0.0.1:5000/
+
