@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影评论预测</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <style>
+        form{
+            width: 500px;
+            margin: 50px auto;
+        }
+        #result{
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-red@2x.png" alt="Fork me on GitHub"></a>
+
+
+<div class="container">
+  <form>
+
+      <div class="form-group">
+          <label for="exampleFormControlTextarea1">电影评论  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  <a href="javascript:get_review();void(0)">换一个</a></label>
+        <textarea id="review" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button type="button" onclick="predict_review()" class="btn btn-primary">预测</button>
+      <div id="result"></div>
+  </form>
+</div>
+
+<script>
+    var sentiment=null
+    function get_review(){
+        $('#result').empty()
+        $.getJSON('/review',function(data){
+            console.log(data.review)
+            $('#review').val(data.review)
+            sentiment=data.sentiment;
+        })
+    }
+
+    get_review();
+
+
+    function predict_review() {
+        $.post('/predict',{"review":$('#review').val()},function(data){
+            var text="真实值："+(sentiment=='1'?'好评':'差评')+",预测值："+(data=='1'?'好评':'差评');
+            $('#result').html(text);
+        });
+
+    }
+</script>
+
+</body>
+</html>
